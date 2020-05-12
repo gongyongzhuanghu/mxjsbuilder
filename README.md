@@ -12,7 +12,7 @@
 ---
 ## mxjsbuilder 使用指南 
 
-## 编译Flutter工程，生成JS代码
+### 编译Flutter工程，生成JS代码
 运行mxjsbuilder.sh脚本，传入工程目录的地址
 
 例如 
@@ -30,7 +30,7 @@ cd mxjsbuilder/
 生成的 JS 文件在对应工程 flutter_app 的 `/Users/mxflutter/flutter_app/mxflutter_js_build` 目录下
 
 
-## 引入JS代码
+### 引入JS代码
 
 参照 github https://github.com/mxflutter/mxflutter/blob/master/mxflutter/example/mxflutter_js_src/home_page.js  中引入 https://github.com/mxflutter/mxflutter/blob/master/mxflutter/example/mxflutter_js_src/mxjsbuilder_demo.js 的代码
 
@@ -46,6 +46,9 @@ Navigator.push(context, new MaterialPageRoute({
 
 ```
 
+### 建议
+
+mxjsbuilder 处于预览版，还在完善当中，推荐编译工程后，在单独几个页面来试用，拷贝独立的页面到 mxflutter 运行，简化写 JS 代码的工作量。欢迎报告问题和提建议。
 
 
 
