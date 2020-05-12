@@ -2,7 +2,7 @@
 
 ---
 
-###【*New】v0.0.1-preview  预览版
+### 【*New】 v0.0.1-preview  预览版
 
 * 定制 dartdevc 编译器，编译 Flutter 工程为 mxflutter 可用的 JS 代码
 * JS 代码简化，工具易用性在开发中，欢迎试用。
