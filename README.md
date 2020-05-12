@@ -32,7 +32,7 @@ cd mxjsbuilder/
 
 ### 引入JS代码
 
-参照 github https://github.com/mxflutter/mxflutter/blob/master/mxflutter/example/mxflutter_js_src/home_page.js  中引入 https://github.com/mxflutter/mxflutter/blob/master/mxflutter/example/mxflutter_js_src/mxjsbuilder_demo.js 的代码
+参照 github https://github.com/mxflutter/mxflutter/blob/dev_mxjsbuilder/mxflutter/example/mxflutter_js_src/home_page.js 中引入 https://github.com/mxflutter/mxflutter/blob/dev_mxjsbuilder/mxflutter/example/mxflutter_js_src/mxjsbuilder_demo.js 的代码
 
 
 ```
@@ -45,6 +45,9 @@ Navigator.push(context, new MaterialPageRoute({
 }))
 
 ```
+
+
+更复杂的示例参照 https://github.com/mxflutter/mxflutter/tree/dev_mxjsbuilder/mxflutter_js_src/mxjsbuilder_demo
 
 ### 建议
 
