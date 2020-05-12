@@ -7,6 +7,8 @@
 * 定制 dartdevc 编译器，编译 Flutter 工程为 mxflutter 可用的 JS 代码
 * JS 代码简化，工具易用性在开发中，欢迎试用。
 
+`mxjsbuilder 包含大文件，如果 github clone 太慢，推荐直接下载zip包`
+
 ---
 ## mxjsbuilder 使用指南 
 
