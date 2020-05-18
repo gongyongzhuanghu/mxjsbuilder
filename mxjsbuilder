@@ -1,0 +1,59 @@
+#!/bin/bash
+
+# 定义脚本执行相关路径
+SCRIPT_DIR=$(cd $(dirname $0); pwd)
+echo $SCRIPT_DIR
+
+PROJECT_DIR_TEMP=$1
+if [ ! -n "$PROJECT_DIR_TEMP" ]; then
+    #echo No project path use ./
+    PROJECT_DIR_TEMP="./"
+fi
+
+# 获取工程目录
+PROJECT_DIR=$(cd $PROJECT_DIR_TEMP; pwd)
+echo Flutter Project Path=$PROJECT_DIR
+
+# 判断工程目录的pubspec.yaml是否存在
+echo "$PROJECT_DIR/pubspec.yaml" 
+if [ ! -f "$PROJECT_DIR/pubspec.yaml" ]; then
+   echo "Error: $PROJECT_DIR/ No pubspec.yaml file found."
+   echo "USAGE:1. mxjsbuilder FlutterProjectPath"
+   echo "USAGE:2. Run mxjsbuilder from the root of your Flutter project."
+   exit 1;
+fi
+
+BIN_DIR="$SCRIPT_DIR/flutter_mxbuilder/bin/cache/dart-sdk/bin"
+#echo $BIN_DIR
+
+DART="$BIN_DIR/dart"
+#echo $DART
+
+PROJECT_NAME=$(basename $PROJECT_DIR)
+# host flutter project flutter pub get
+echo "$PROJECT_NAME flutter pub get... "
+cd $PROJECT_DIR
+flutter pub get
+
+echo Clean $PROJECT_DIR/mxflutter_js_build/
+rm -rf $PROJECT_DIR/mxflutter_js_build/
+
+BUILD_SCRIPT="$SCRIPT_DIR/flutter_mxbuilder/packages/flutter_tools/bin/flutter_tools.snapshot"
+#echo $BUILD_SCRIPT
+
+echo Running mxjsbuilder $PROJECT_NAME ...
+# 执行脚本
+"$DART" "$BUILD_SCRIPT" "run" "-d" "chrome"
+
+# 把工程文件移动到外面,删除不用的文件
+rm -rf $PROJECT_DIR/mxflutter_js_build/packages/flutter/
+rm -rf $PROJECT_DIR/mxflutter_js_build/packages/collection/
+rm -rf $PROJECT_DIR/mxflutter_js_build/packages/meta/
+rm -rf  $PROJECT_DIR/mxflutter_js_build/packages/typed_data/
+rm -rf  $PROJECT_DIR/mxflutter_js_build/packages/vector_math/
+mv  $PROJECT_DIR/mxflutter_js_build/packages/* $PROJECT_DIR/mxflutter_js_build/
+rm -rf  $PROJECT_DIR/mxflutter_js_build/packages/
+rm  $PROJECT_DIR/mxflutter_js_build/web_entrypoint.dart.lib.js
+
+echo mxjsbuilder build done.
+echo Output:$PROJECT_DIR/mxflutter_js_build

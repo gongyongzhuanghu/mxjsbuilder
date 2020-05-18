@@ -2,7 +2,7 @@
 
 ---
 
-### 【*New】 v0.0.1-preview  预览版
+### 【*New】 v0.0.2-preview  预览版
 
 * 定制 dartdevc 编译器，编译 Flutter 工程为 mxflutter 可用的 JS 代码
 * JS 代码简化，工具易用性在开发中，欢迎试用。
@@ -13,21 +13,30 @@
 ## mxjsbuilder 使用指南 
 
 ### 编译Flutter工程，生成JS代码
-运行mxjsbuilder.sh脚本，传入工程目录的地址
-
-例如 
+示例1:运行 mxjsbuilder ，传入工程目录的地址
 
 
 ```
 #进入mxjsbuilder目录
 cd mxjsbuilder/
 
-#生成flutter_app工程
-./mxjsbuilder.sh /Users/mxflutter/flutter_app
+#执行 mxjsbuilder ，编译 flutter_app 工程
+./mxjsbuilder /Users/mxflutter/flutter_app
 ```
 
+示例2: 在要编译的 Flutter 工程根目录运行mxjsbuilder
+
+```
+#进入要编译的 Flutter 工程跟目录
+cd /Users/mxflutter/flutter_app/
+
+#执行 mxjsbuilder ，编译 flutter_app 工程
+/Users/mxflutter_tools/mxjsbuilder 
+```
 
 生成的 JS 文件在对应工程 flutter_app 的 `/Users/mxflutter/flutter_app/mxflutter_js_build` 目录下
+
+推荐将 mxjsbuilder 所在路径加入环境变量，在工程根目录运行 mxjsbuilder
 
 
 ### 引入JS代码
@@ -52,6 +61,8 @@ Navigator.push(context, new MaterialPageRoute({
 ### 建议
 
 mxjsbuilder 处于预览版，还在完善当中，推荐编译工程后，在单独几个页面来试用，拷贝独立的页面到 mxflutter 运行，简化写 JS 代码的工作量。欢迎报告问题和提建议。
+
+
 
 
 
